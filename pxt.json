@@ -6,7 +6,9 @@
         "controller": "*",
         "pxt-lantern": "github:felixtsu/pxt-lantern#v0.2.1",
         "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
-        "Color Fading": "github:jwunderl/pxt-color#v0.2.2"
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.2",
+        "multiplayer": "*",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2"
     },
     "files": [
         "main.blocks",
