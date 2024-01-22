@@ -1,3 +1,6 @@
+namespace StatusBarKind {
+    export const Scraps = StatusBarKind.create()
+}
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -139,3 +142,8 @@ let mySprite = sprites.create(img`
     . . . c c c c c c c c b b . . . 
     `, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`lemap`)
+let statusbar = statusbars.create(20, 4, StatusBarKind.Scraps)
+statusbar.value = 0
+statusbar.positionDirection(CollisionDirection.Top)
+statusbar.setLabel("Scraps")
+statusbar.setBarBorder(1, 13)

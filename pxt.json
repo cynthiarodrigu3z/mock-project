@@ -1,8 +1,10 @@
 {
-    "name": "mock project",
+    "name": "mock project - Copy",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
+        "multiplayer": "*"
     },
     "files": [
         "main.blocks",
