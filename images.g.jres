@@ -24,6 +24,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "numberpad"
     },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPDM/A8AAAAAAA8PAAAAAPD/////DwAA8Lu7u7sPAADwu7u7uw8AAPC7u7u7DwAA8Lu7u7sPAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "generator"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
