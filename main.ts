@@ -24,12 +24,10 @@ forever(function () {
     if (nmbpad.overlapsWith(mySprite)) {
         if (game.askForNumber("", 4) == 1151) {
             game.splash("correct!")
-            light.clear()
             scene.cameraShake(4, 500)
             tiles.setCurrentTilemap(tilemap`map in doors`)
         } else {
             game.splash("incorrect")
-            light.clear()
         }
     }
 })
