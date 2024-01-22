@@ -1,9 +1,4 @@
 {
-    "image3": {
-        "data": "hwQQABAAAAAAAAAAAMsMAAAAsAuw3csAAACwvdvd3QwAALBVvdzdywAAu1tVzd3NALBbtVXF3c0Au1VVW7XdzQBbW1vVW9XNAFu8XFVVVc27W/VLVVVVxVVb1URVVVXFu1vdRFVVVbUAsEREVVVVuwAATLRbVdULAABAC7C7uwAAALAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "duck"
-    },
     "image4": {
         "data": "hwQQABAAAAAAAAAA/w8AAAAAAMBE9AAAAAAATEREDwAAAMBEREQPAAAATET0RPQAAMDcRERE/QAAzEQRERFEDwDMRETExEQPwM1ERMRETw/AzURERP9PD8DNTURERMTNwN0cTUTU3M0AzMwREf2/zQAAAMz0/8wMAADARET0AAAAAMDM//8AAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -28,6 +23,11 @@
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPDM/A8AAAAAAA8PAAAAAPD/////DwAA8Lu7u7sPAADwu7u7uw8AAPC7u7u7DwAA8Lu7u7sPAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "generator"
+    },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAu8sMAAAAAAC93csAAAAAAN3c3QwAAAAAXcXdywAAsLtb1dzNAAC7VVtV3M0AsFtVvVXbzQCw1dFVvdXNALAV/1VVVc2wu/W/RVVVxVu8VdVEVVXFtbBV3URVVbULANtERFVVuwAA8ExEW9ULAAAAALSwuwAAAAAACwAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "duck"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
