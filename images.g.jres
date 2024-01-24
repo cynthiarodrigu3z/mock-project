@@ -49,6 +49,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "dot"
     },
+    "image9": {
+        "data": "hwQgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////////8AAAAAv7u7u7u7u7u7u7v7AAAAAL+7u7u7u7u7u7u7+wAAAAD///////////////8AAAAAv7u7u7u7u7u7u7v7AAAAAL+7u7u7u7u7u7u7+wAAAAD///////+/u7u7u/sAAAAAv7u7u7u7////////AAAAAL+7u7u7u7u7u7u7+wAAAAD//////7+7u7u7u/sAAAAAv7u7u7v7v7u7u7v7AAAAAL+7u7u7u/v/v7u7+wAAAAC/u7u7u7u7u///+/8AAAAA////////v7u7+7/7AAAAAL+7u7u7u/v/u7u7+wAAAAC/u7u7u7u7u/+/u/sAAAAAv7u7u7u7u7u7/7/7AAAAAL+7u7u7u7u7u7v/+wAAAAD///////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "tattered metal sheet"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

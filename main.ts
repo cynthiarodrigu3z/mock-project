@@ -25,6 +25,9 @@ function cutscene () {
     sprites.destroy(meteor)
     sprites.destroy(spaceship)
 }
+function placeScrap () {
+	
+}
 let spaceship: Sprite = null
 let meteor: Sprite = null
 let key: Sprite = null
@@ -47,7 +50,6 @@ game.onUpdateInterval(1000, function () {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
-            music.play(music.createSoundEffect(WaveShape.Noise, 794, 1599, 255, 104, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         } else {
             game.splash("access denied")
         }
