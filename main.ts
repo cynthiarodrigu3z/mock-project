@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const Item = SpriteKind.create()
     export const object = SpriteKind.create()
+    export const scrape = SpriteKind.create()
 }
 function keyplacer () {
     key = sprites.create(assets.image`myImage`, SpriteKind.Item)
@@ -8,6 +9,13 @@ function keyplacer () {
     // Example: Creating a key item
     tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherSprite) {
+    if (true) {
+        sprites.destroy(scrap)
+        mySprite.sayText("collected", 100, false)
+        tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
+    }
+})
 function cutscene () {
     scene.setBackgroundImage(assets.image`spaceearth`)
     game.showLongText("meanwhile in space...", DialogLayout.Bottom)
@@ -26,15 +34,18 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 function placeScrap () {
-	
+    scrap = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
+    tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
 }
 let spaceship: Sprite = null
 let meteor: Sprite = null
+let scrap: Sprite = null
 let key: Sprite = null
+let mySprite: Sprite = null
 cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
-let mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
+mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
 controller.moveSprite(mySprite)
 scene.cameraFollowSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
@@ -50,6 +61,7 @@ game.onUpdateInterval(1000, function () {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
+            placeScrap()
         } else {
             game.splash("access denied")
         }
