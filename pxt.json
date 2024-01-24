@@ -6,7 +6,10 @@
         "controller": "*",
         "pxt-lantern": "github:felixtsu/pxt-lantern#v0.2.1",
         "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
-        "Color Fading": "github:jwunderl/pxt-color#v0.2.2"
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.2",
+        "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
+        "Inventory": "github:UnsignedArduino/Inventory#v1.1.1",
+        "arcade-sprite-events": "github:riknoll/arcade-sprite-events#dc93eec8412053ebbd2b8f01cf5b6ae285d28900"
     },
     "files": [
         "main.blocks",

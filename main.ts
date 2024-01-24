@@ -29,11 +29,11 @@ let spaceship: Sprite = null
 let meteor: Sprite = null
 let key: Sprite = null
 cutscene()
+keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
 let mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
 controller.moveSprite(mySprite)
 scene.cameraFollowSprite(mySprite)
-keyplacer()
 multilights.addLightSource(mySprite, 14)
 multilights.toggleLighting(true)
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
@@ -44,15 +44,17 @@ story.printText("lets look around ", 80, 0)
 game.onUpdateInterval(1000, function () {
     if (mySprite.tileKindAt(TileDirection.Right, assets.tile`Tile2`)) {
         if (game.askForNumber("", 4) == 1151) {
-            game.splash("correct!")
-            scene.cameraShake(4, 500)
+            game.splash("access granted")
+            scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
+            music.play(music.createSoundEffect(WaveShape.Noise, 794, 1599, 255, 104, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
         } else {
-            game.splash("incorrect")
+            game.splash("access denied")
         }
     }
     if (mySprite.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
-        scene.cameraShake(6, 500)
+        music.play(music.createSoundEffect(WaveShape.Noise, 794, 1599, 255, 104, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+        scene.cameraShake(6, 1000)
         multilights.toggleLighting(false)
     }
 })

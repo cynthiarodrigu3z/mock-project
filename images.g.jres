@@ -44,6 +44,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "ship"
     },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAIAAAAAACAiIgIAAAAAIiIiIgAAACAiIiIiAgAAICIiIiICAAAgIiIiIgIAACAiIiIiAgAAICIiIiICAAAAIiIiIgIAAAAiIiIiAgAAACAiIiIAAAAAACAiAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "dot"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
