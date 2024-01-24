@@ -3,6 +3,17 @@ namespace SpriteKind {
     export const object = SpriteKind.create()
     export const scrape = SpriteKind.create()
 }
+namespace StatusBarKind {
+    export const statusbar = StatusBarKind.create()
+}
+function statusBar () {
+    statusbar = statusbars.create(30, 5, StatusBarKind.statusbar)
+    statusbar.value = 0
+    statusbar.max = 100
+    statusbar.positionDirection(CollisionDirection.Top)
+    statusbar.setBarBorder(1, 15)
+    statusbar.setLabel("Scraps")
+}
 function keyplacer () {
     key = sprites.create(assets.image`myImage`, SpriteKind.Item)
     tiles.placeOnRandomTile(key, assets.tile`Tile0`)
@@ -12,8 +23,9 @@ function keyplacer () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherSprite) {
     if (true) {
         sprites.destroy(scrap)
-        mySprite.sayText("collected", 100, false)
+        mySprite.sayText("collected", 200, false)
         tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
+        statusbar.value += 20
     }
 })
 function cutscene () {
@@ -40,6 +52,7 @@ function placeScrap () {
 let spaceship: Sprite = null
 let meteor: Sprite = null
 let scrap: Sprite = null
+let statusbar: StatusBarSprite = null
 let key: Sprite = null
 let mySprite: Sprite = null
 cutscene()
@@ -62,6 +75,7 @@ game.onUpdateInterval(1000, function () {
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
             placeScrap()
+            statusBar()
         } else {
             game.splash("access denied")
         }
