@@ -10,7 +10,8 @@
         "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
         "Inventory": "github:UnsignedArduino/Inventory#v1.1.1",
         "arcade-sprite-events": "github:riknoll/arcade-sprite-events#dc93eec8412053ebbd2b8f01cf5b6ae285d28900",
-        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2"
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
+        "multiplayer": "*"
     },
     "files": [
         "main.blocks",

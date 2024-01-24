@@ -25,8 +25,8 @@ function keyplacer () {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherSprite) {
     if (true) {
+        otherSprite.sayText("collected", 200, false)
         sprites.destroy(otherSprite, effects.spray, 500)
-        mySprite.sayText("collected", 200, false)
         statusbar.value += 5
     }
 })
@@ -48,8 +48,8 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 function placeScrap (num: number) {
-    for (let index = 0; index < num; index++) {
-        if (100 > statusbar.value) {
+    if (100 > statusbar.value) {
+        for (let index = 0; index < num; index++) {
             list = [sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape), sprites.create(img`
                 ..............bbbbbbb...........
                 ...........bb66663333baa........
@@ -85,9 +85,9 @@ function placeScrap (num: number) {
                 ................................
                 `, SpriteKind.scrape), sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)]
             tiles.placeOnRandomTile(list._pickRandom(), assets.tile`Tile3`)
-        } else {
-            endscene()
         }
+    } else {
+        endscene()
     }
 }
 let list: Sprite[] = []
@@ -95,14 +95,34 @@ let spaceship: Sprite = null
 let meteor: Sprite = null
 let statusbar: StatusBarSprite = null
 let key: Sprite = null
-let mySprite: Sprite = null
 cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
-mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
+let mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
+let mySprite2 = sprites.create(img`
+    . . . . f f f f f . . . . . . . 
+    . . . f e e e e e f . . . . . . 
+    . . f d d d d e e e f . . . . . 
+    . c d f d d f d e e f f . . . . 
+    . c d f d d f d e e d d f . . . 
+    c d e e d d d d e e b d c . . . 
+    c d d d d c d d e e b d c . . . 
+    c c c c c d d e e e f c . . . . 
+    . f d d d d e e e f f . . . . . 
+    . . f f f f f e e e e f . . . . 
+    . . . . f f e e e e e e f . f f 
+    . . . f e e f e e f e e f . e f 
+    . . f e e f e e f e e e f . e f 
+    . f b d f d b f b b f e f f e f 
+    . f d d f d d f d d b e f f f f 
+    . . f f f f f f f f f f f f f . 
+    `, SpriteKind.Player)
+mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite)
+mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), mySprite2)
 controller.moveSprite(mySprite)
 scene.cameraFollowSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
+multilights.addLightSource(mySprite2, 14)
 multilights.toggleLighting(true)
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 game.showLongText("The powers out....", DialogLayout.Bottom)
@@ -115,8 +135,8 @@ game.onUpdateInterval(1000, function () {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
-            placeScrap(1)
             statusBar()
+            placeScrap(0)
         } else {
             game.splash("access denied")
         }
