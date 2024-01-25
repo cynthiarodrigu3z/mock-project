@@ -27,7 +27,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherS
     if (true) {
         otherSprite.sayText("collected", 200, false)
         sprites.destroy(otherSprite, effects.spray, 500)
-        statusbar.value += 5
+        statusbar.value += 20
     }
 })
 function cutscene () {
@@ -49,7 +49,7 @@ function cutscene () {
 }
 function placeScrap (num: number) {
     if (100 > statusbar.value) {
-        for (let index = 0; index < num; index++) {
+        for (let index = 0; index < 5; index++) {
             list = [sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape), sprites.create(img`
                 ..............bbbbbbb...........
                 ...........bb66663333baa........
@@ -136,7 +136,7 @@ game.onUpdateInterval(1000, function () {
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
             statusBar()
-            placeScrap(0)
+            placeScrap(1)
         } else {
             game.splash("access denied")
         }
