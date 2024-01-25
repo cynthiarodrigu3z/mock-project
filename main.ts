@@ -6,16 +6,8 @@ namespace SpriteKind {
 namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
-function endscene () {
-    scene.setBackgroundImage(assets.image`space`)
-}
 function statusBar () {
-    statusbar = statusbars.create(30, 5, StatusBarKind.statusbar)
-    statusbar.value = 0
-    statusbar.max = 100
-    statusbar.positionDirection(CollisionDirection.Top)
-    statusbar.setBarBorder(1, 15)
-    statusbar.setLabel("Scraps")
+	
 }
 function keyplacer () {
     key = sprites.create(assets.image`myImage`, SpriteKind.Item)
@@ -27,7 +19,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherS
     if (true) {
         otherSprite.sayText("collected", 200, false)
         sprites.destroy(otherSprite, effects.spray, 500)
-        statusbar.value += 20
     }
 })
 function cutscene () {
@@ -48,8 +39,8 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 function placeScrap (num: number) {
-    if (100 > statusbar.value) {
-        for (let index = 0; index < 5; index++) {
+    if (100 > statusbar2.value) {
+        for (let index = 0; index < 7; index++) {
             list = [sprites.create(assets.image`door`, SpriteKind.scrape), sprites.create(img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
@@ -68,21 +59,46 @@ function placeScrap (num: number) {
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `, SpriteKind.scrape), sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)]
+            scrap = sprites.create(assets.image`door`, SpriteKind.scrape)
+            scrap2 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . 5 5 5 5 5 5 5 5 5 . . . . 
+                . . 5 c c c c c c c c c 5 . . . 
+                . . 5 c b b b b b b b c 5 . . . 
+                . . 5 c b b b b b b b b c 5 . . 
+                . . . 5 c b b b b b b b c 5 . . 
+                . . . 5 c b b b b b b b c 5 . . 
+                . . 5 c b b b b b b b b c 5 . . 
+                . . 5 c b b b b b b b c 5 . . . 
+                . . 5 c b b b b b b b c 5 . . . 
+                . . 5 c b b b b b b b c 5 . . . 
+                . . 5 c c c c c c c c 5 . . . . 
+                . . . 5 5 5 5 5 5 5 5 . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.scrape)
+            scrap3 = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
             tiles.placeOnRandomTile(list._pickRandom(), assets.tile`Tile3`)
         }
-    } else {
-        endscene()
+    }
+    if (mySprite.overlapsWith(scrap) || (mySprite.overlapsWith(scrap2) || mySprite.overlapsWith(scrap3))) {
+        statusbar2.value += num
     }
 }
+let scrap3: Sprite = null
+let scrap2: Sprite = null
+let scrap: Sprite = null
 let list: Sprite[] = []
+let statusbar2: StatusBarSprite = null
 let spaceship: Sprite = null
 let meteor: Sprite = null
-let statusbar: StatusBarSprite = null
 let key: Sprite = null
+let mySprite: Sprite = null
 cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
-let mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
+mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
 let mySprite2 = sprites.create(img`
     . . . . f f f f f . . . . . . . 
     . . . f e e e e e f . . . . . . 
@@ -119,8 +135,13 @@ game.onUpdateInterval(1000, function () {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
-            statusBar()
-            placeScrap(1)
+            statusbar2 = statusbars.create(30, 5, StatusBarKind.statusbar)
+            statusbar2.value = 0
+            statusbar2.max = 100
+            statusbar2.positionDirection(CollisionDirection.Top)
+            statusbar2.setBarBorder(1, 15)
+            statusbar2.setLabel("Scraps")
+            placeScrap(randint(15, 20))
         } else {
             game.splash("access denied")
         }
