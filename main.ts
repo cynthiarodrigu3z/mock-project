@@ -52,8 +52,9 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 controller.player2.onEvent(ControllerEvent.Connected, function () {
-    controller.player2.moveSprite(mySprite2)
+    mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), mySprite2)
     scene.cameraFollowSprite(mySprite2)
+    controller.player2.moveSprite(mySprite2)
 })
 function placeScrap (num: number) {
     if (100 > statusbar2.value) {
@@ -101,11 +102,15 @@ function placeScrap (num: number) {
     }
     if (mySprite.overlapsWith(scrap) || (mySprite.overlapsWith(scrap2) || mySprite.overlapsWith(scrap3))) {
         statusbar2.value += num
+        if (mySprite2.overlapsWith(scrap) || (mySprite2.overlapsWith(scrap2) || mySprite2.overlapsWith(scrap3))) {
+            statusbar2.value += num
+        }
     }
 }
 controller.player1.onEvent(ControllerEvent.Connected, function () {
-    controller.player1.moveSprite(mySprite)
+    mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite2)
     scene.cameraFollowSprite(mySprite)
+    controller.player1.moveSprite(mySprite2)
 })
 let scrap3: Sprite = null
 let scrap2: Sprite = null
@@ -121,6 +126,9 @@ cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
+controller.player1.moveSprite(mySprite)
+mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite)
+scene.cameraFollowSprite(mySprite)
 mySprite2 = sprites.create(img`
     . . . . f f f f f . . . . . . . 
     . . . f e e e e e f . . . . . . 
@@ -139,8 +147,6 @@ mySprite2 = sprites.create(img`
     . f d d f d d f d d b e f f f f 
     . . f f f f f f f f f f f f f . 
     `, SpriteKind.Player)
-mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite)
-mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), mySprite2)
 multilights.addLightSource(mySprite, 14)
 multilights.addLightSource(mySprite2, 14)
 multilights.toggleLighting(true)
@@ -165,9 +171,23 @@ game.onUpdateInterval(1000, function () {
         scene.cameraShake(6, 1000)
         multilights.toggleLighting(false)
     }
+    if (mySprite2.tileKindAt(TileDirection.Right, assets.tile`Tile2`)) {
+        if (game.askForNumber("", 4) == 1151) {
+            game.splash("access granted")
+            scene.cameraShake(8, 500)
+            tiles.setCurrentTilemap(tilemap`lemap`)
+            placeScrap(randint(15, 20))
+        } else {
+            game.splash("access denied")
+        }
+    }
 })
 forever(function () {
     if (key.overlapsWith(mySprite)) {
+        story.spriteSayText(key, "1151")
+        story.printText("great you found it, now go enter it to the pinpad ", 150, 60)
+    }
+    if (key.overlapsWith(mySprite2)) {
         story.spriteSayText(key, "1151")
         story.printText("great you found it, now go enter it to the pinpad ", 150, 60)
     }
