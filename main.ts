@@ -6,6 +6,14 @@ namespace SpriteKind {
 namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
+function endScene () {
+    scene.setBackgroundImage(assets.image`space`)
+    spaceship = sprites.create(assets.image`ship`, SpriteKind.Player)
+    spaceship.setScale(0.2, ScaleAnchor.Middle)
+    spaceship.setPosition(74, 50)
+    spaceship.startEffect(effects.confetti)
+    game.showLongText("You repaired the ship! The end.", DialogLayout.Bottom)
+}
 function statusBar () {
     statusbar2 = statusbars.create(30, 5, StatusBarKind.statusbar)
     statusbar2.value = 0
@@ -103,9 +111,9 @@ let scrap3: Sprite = null
 let scrap2: Sprite = null
 let scrap: Sprite = null
 let list: Sprite[] = []
-let spaceship: Sprite = null
 let meteor: Sprite = null
 let statusbar2: StatusBarSprite = null
+let spaceship: Sprite = null
 let key: Sprite = null
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
