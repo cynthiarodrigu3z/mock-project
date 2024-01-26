@@ -57,7 +57,7 @@ controller.player2.onEvent(ControllerEvent.Connected, function () {
     controller.player2.moveSprite(mySprite2)
 })
 function placeScrap (num: number) {
-    if (100 > statusbar2.value) {
+    if (100 / num > statusbar2.value) {
         for (let index = 0; index < 7; index++) {
             list = [sprites.create(assets.image`door`, SpriteKind.scrape), sprites.create(img`
                 . . . . . . . . . . . . . . . . 
