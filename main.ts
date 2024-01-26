@@ -7,7 +7,12 @@ namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
 function statusBar () {
-	
+    statusbar2 = statusbars.create(30, 5, StatusBarKind.statusbar)
+    statusbar2.value = 0
+    statusbar2.max = 100
+    statusbar2.positionDirection(CollisionDirection.Top)
+    statusbar2.setBarBorder(1, 15)
+    statusbar2.setLabel("Scraps")
 }
 function keyplacer () {
     key = sprites.create(assets.image`myImage`, SpriteKind.Item)
@@ -90,9 +95,9 @@ let scrap3: Sprite = null
 let scrap2: Sprite = null
 let scrap: Sprite = null
 let list: Sprite[] = []
-let statusbar2: StatusBarSprite = null
 let spaceship: Sprite = null
 let meteor: Sprite = null
+let statusbar2: StatusBarSprite = null
 let key: Sprite = null
 let mySprite: Sprite = null
 cutscene()
@@ -135,12 +140,6 @@ game.onUpdateInterval(1000, function () {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
-            statusbar2 = statusbars.create(30, 5, StatusBarKind.statusbar)
-            statusbar2.value = 0
-            statusbar2.max = 100
-            statusbar2.positionDirection(CollisionDirection.Top)
-            statusbar2.setBarBorder(1, 15)
-            statusbar2.setLabel("Scraps")
             placeScrap(randint(15, 20))
         } else {
             game.splash("access denied")
