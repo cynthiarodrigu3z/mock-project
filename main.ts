@@ -29,10 +29,9 @@ function keyplacer () {
     tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherSprite) {
-    if (true) {
-        otherSprite.sayText("collected", 200, false)
-        sprites.destroy(otherSprite, effects.spray, 500)
-    }
+    otherSprite.sayText("collected", 200, false)
+    sprites.destroy(otherSprite, effects.spray, 500)
+    statusbar2.value += 10
 })
 function cutscene () {
     scene.setBackgroundImage(assets.image`spaceearth`)
@@ -57,8 +56,8 @@ controller.player2.onEvent(ControllerEvent.Connected, function () {
     controller.player2.moveSprite(mySprite2)
 })
 function placeScrap (num: number) {
-    if (100 / num > statusbar2.value) {
-        for (let index = 0; index < 7; index++) {
+    if (100 > statusbar2.value) {
+        for (let index = 0; index < 100 / num; index++) {
             list = [sprites.create(assets.image`door`, SpriteKind.scrape), sprites.create(img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
@@ -77,33 +76,7 @@ function placeScrap (num: number) {
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `, SpriteKind.scrape), sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)]
-            scrap = sprites.create(assets.image`door`, SpriteKind.scrape)
-            scrap2 = sprites.create(img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . 5 5 5 5 5 5 5 5 5 . . . . 
-                . . 5 c c c c c c c c c 5 . . . 
-                . . 5 c b b b b b b b c 5 . . . 
-                . . 5 c b b b b b b b b c 5 . . 
-                . . . 5 c b b b b b b b c 5 . . 
-                . . . 5 c b b b b b b b c 5 . . 
-                . . 5 c b b b b b b b b c 5 . . 
-                . . 5 c b b b b b b b c 5 . . . 
-                . . 5 c b b b b b b b c 5 . . . 
-                . . 5 c b b b b b b b c 5 . . . 
-                . . 5 c c c c c c c c 5 . . . . 
-                . . . 5 5 5 5 5 5 5 5 . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `, SpriteKind.scrape)
-            scrap3 = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
             tiles.placeOnRandomTile(list._pickRandom(), assets.tile`Tile3`)
-        }
-    }
-    if (mySprite.overlapsWith(scrap) || (mySprite.overlapsWith(scrap2) || mySprite.overlapsWith(scrap3))) {
-        statusbar2.value += num
-        if (mySprite2.overlapsWith(scrap) || (mySprite2.overlapsWith(scrap2) || mySprite2.overlapsWith(scrap3))) {
-            statusbar2.value += num
         }
     }
 }
@@ -112,9 +85,6 @@ controller.player1.onEvent(ControllerEvent.Connected, function () {
     scene.cameraFollowSprite(mySprite)
     controller.player1.moveSprite(mySprite2)
 })
-let scrap3: Sprite = null
-let scrap2: Sprite = null
-let scrap: Sprite = null
 let list: Sprite[] = []
 let meteor: Sprite = null
 let statusbar2: StatusBarSprite = null
