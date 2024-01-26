@@ -43,6 +43,10 @@ function cutscene () {
     sprites.destroy(meteor)
     sprites.destroy(spaceship)
 }
+controller.player2.onEvent(ControllerEvent.Connected, function () {
+    controller.moveSprite(mySprite2)
+    scene.cameraFollowSprite(mySprite2)
+})
 function placeScrap (num: number) {
     if (100 > statusbar2.value) {
         for (let index = 0; index < 7; index++) {
@@ -91,6 +95,10 @@ function placeScrap (num: number) {
         statusbar2.value += num
     }
 }
+controller.player1.onEvent(ControllerEvent.Connected, function () {
+    controller.moveSprite(mySprite)
+    scene.cameraFollowSprite(mySprite)
+})
 let scrap3: Sprite = null
 let scrap2: Sprite = null
 let scrap: Sprite = null
@@ -99,12 +107,13 @@ let spaceship: Sprite = null
 let meteor: Sprite = null
 let statusbar2: StatusBarSprite = null
 let key: Sprite = null
+let mySprite2: Sprite = null
 let mySprite: Sprite = null
 cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
-let mySprite2 = sprites.create(img`
+mySprite2 = sprites.create(img`
     . . . . f f f f f . . . . . . . 
     . . . f e e e e e f . . . . . . 
     . . f d d d d e e e f . . . . . 
@@ -124,8 +133,6 @@ let mySprite2 = sprites.create(img`
     `, SpriteKind.Player)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), mySprite2)
-controller.moveSprite(mySprite)
-scene.cameraFollowSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
 multilights.addLightSource(mySprite2, 14)
 multilights.toggleLighting(true)
