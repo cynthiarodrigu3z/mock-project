@@ -44,7 +44,7 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 controller.player2.onEvent(ControllerEvent.Connected, function () {
-    controller.moveSprite(mySprite2)
+    controller.player2.moveSprite(mySprite)
     scene.cameraFollowSprite(mySprite2)
 })
 function placeScrap (num: number) {
@@ -96,7 +96,7 @@ function placeScrap (num: number) {
     }
 }
 controller.player1.onEvent(ControllerEvent.Connected, function () {
-    controller.moveSprite(mySprite)
+    controller.player1.moveSprite(mySprite)
     scene.cameraFollowSprite(mySprite)
 })
 let scrap3: Sprite = null
