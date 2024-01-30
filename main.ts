@@ -6,14 +6,6 @@ namespace SpriteKind {
 namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
-function endScene () {
-    scene.setBackgroundImage(assets.image`space`)
-    spaceship = sprites.create(assets.image`ship`, SpriteKind.Player)
-    spaceship.setScale(0.2, ScaleAnchor.Middle)
-    spaceship.setPosition(74, 50)
-    spaceship.startEffect(effects.confetti)
-    game.showLongText("You repaired the ship! The end.", DialogLayout.Bottom)
-}
 function statusBar () {
     statusbar2 = statusbars.create(30, 5, StatusBarKind.statusbar)
     statusbar2.value = 0
@@ -100,6 +92,7 @@ function placeScrap (num: number) {
         }
     }
     if (mySprite.overlapsWith(scrap) || (mySprite.overlapsWith(scrap2) || mySprite.overlapsWith(scrap3))) {
+        statusbar2.value = statusbar2.value
         statusbar2.value += num
     }
 }
@@ -111,9 +104,9 @@ let scrap3: Sprite = null
 let scrap2: Sprite = null
 let scrap: Sprite = null
 let list: Sprite[] = []
+let spaceship: Sprite = null
 let meteor: Sprite = null
 let statusbar2: StatusBarSprite = null
-let spaceship: Sprite = null
 let key: Sprite = null
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
@@ -141,6 +134,7 @@ mySprite2 = sprites.create(img`
     `, SpriteKind.Player)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), mySprite2)
+scene.cameraFollowSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
 multilights.addLightSource(mySprite2, 14)
 multilights.toggleLighting(true)
