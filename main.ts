@@ -44,7 +44,7 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 controller.player2.onEvent(ControllerEvent.Connected, function () {
-    controller.player2.moveSprite(mySprite2)
+    controller.moveSprite(mySprite2)
     scene.cameraFollowSprite(mySprite2)
 })
 function placeScrap (num: number) {
@@ -92,12 +92,11 @@ function placeScrap (num: number) {
         }
     }
     if (mySprite.overlapsWith(scrap) || (mySprite.overlapsWith(scrap2) || mySprite.overlapsWith(scrap3))) {
-        statusbar2.value = statusbar2.value
         statusbar2.value += num
     }
 }
 controller.player1.onEvent(ControllerEvent.Connected, function () {
-    controller.player1.moveSprite(mySprite)
+    controller.moveSprite(mySprite)
     scene.cameraFollowSprite(mySprite)
 })
 let scrap3: Sprite = null
@@ -134,7 +133,6 @@ mySprite2 = sprites.create(img`
     `, SpriteKind.Player)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), mySprite)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), mySprite2)
-scene.cameraFollowSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
 multilights.addLightSource(mySprite2, 14)
 multilights.toggleLighting(true)
