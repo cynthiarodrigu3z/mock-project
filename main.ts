@@ -7,6 +7,7 @@ namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
 function openDoorWithPin (code: number) {
+    // Placeholder algorithm to check if the pin is correct
     if (code == 1151) {
         // Access granted
         return true
@@ -17,8 +18,6 @@ function openDoorWithPin (code: number) {
 }
 function keyplacer () {
     key = sprites.create(assets.image`myImage`, SpriteKind.Item)
-    tiles.placeOnRandomTile(key, assets.tile`Tile0`)
-    // Example: Creating a key item
     tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherSprite) {
@@ -54,6 +53,7 @@ function placeScrap (num: number) {
         scene.setBackgroundImage(assets.image`womp`)
     }
 }
+let pin = 0
 let list: Sprite[] = []
 let trashvalue = 0
 let spaceship: Sprite = null
@@ -77,7 +77,8 @@ game.showLongText("im sure i wrote the code for the door down somewhere", Dialog
 story.printText("lets look around ", 80, 0)
 game.onUpdateInterval(1000, function () {
     if (mySprite.tileKindAt(TileDirection.Right, assets.tile`Tile2`)) {
-        if (game.askForNumber("", 4) == 1151) {
+        pin = game.askForNumber("", 4)
+        if (openDoorWithPin(pin)) {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
