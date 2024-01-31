@@ -23,6 +23,11 @@ function keyplacer () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherSprite) {
     otherSprite.sayText("collected", 200, false)
     sprites.destroy(otherSprite, effects.spray, 500)
+    collectedTrash += 1
+    if (collectedTrash == totalTrash) {
+        game.splash("All scrape collected!")
+        game.over(true)
+    }
 })
 function cutscene () {
     scene.setBackgroundImage(assets.image`spaceearth`)
@@ -42,24 +47,22 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 function placeScrap (num: number) {
-    let sum = 0
-    trashvalue = num
-    if (100 > sum) {
-        for (let index = 0; index < 100 / num + 1; index++) {
-            list = [sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape), sprites.create(assets.image`metal sheet`, SpriteKind.scrape), sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)]
-            tiles.placeOnRandomTile(list._pickRandom(), assets.tile`Tile3`)
-        }
-    } else {
-        scene.setBackgroundImage(assets.image`womp`)
+    totalTrash = Math.floor(100 / num) + 1
+    for (let index = 0; index < totalTrash; index++) {
+        let list: Sprite[] = []
+        scrap = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
+        // Add the scrap sprite to the list
+        list.push(scrap)
+        tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
     }
 }
 let pin = 0
-let list: Sprite[] = []
-let trashvalue = 0
+let scrap: Sprite = null
 let spaceship: Sprite = null
 let meteor: Sprite = null
+let totalTrash = 0
+let collectedTrash = 0
 let key: Sprite = null
-let status: number[] = []
 cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
@@ -77,12 +80,13 @@ game.showLongText("im sure i wrote the code for the door down somewhere", Dialog
 story.printText("lets look around ", 80, 0)
 game.onUpdateInterval(1000, function () {
     if (mySprite.tileKindAt(TileDirection.Right, assets.tile`Tile2`)) {
-        pin = game.askForNumber("", 4)
+        pin = game.askForNumber("pincode", 4)
         if (openDoorWithPin(pin)) {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
-            placeScrap(game.askForNumber("", 2))
+            placeScrap(game.askForNumber("difficulty level 1-20", 2))
+            game.splash("the door opened! lets go turn on the power")
         } else {
             game.splash("access denied")
         }
