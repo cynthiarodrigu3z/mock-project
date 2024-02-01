@@ -74,6 +74,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "womp"
     },
+    "image14": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAcHd3dwAAAAB3d3d3BwAAcHd3d3d3AAB3d2d3ZncHAHd3d3d2dwcAd3d3d3Z3BwB3d3d3ZncHAHB3Z3dndgcAcHd3d3d3BwAAd3d3d3cAAAB3d3d3dwAAAHB3d3cHAAAAAHB3AAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "alien"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
