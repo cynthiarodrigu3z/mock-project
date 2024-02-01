@@ -46,13 +46,24 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 function placeScrap (num: number) {
+    let list: Sprite[] = []
     totalTrash = Math.floor(100 / num) + 1
     for (let index = 0; index < totalTrash; index++) {
-        let list: Sprite[] = []
         scrap = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
         // Add the scrap sprite to the list
         list.push(scrap)
         tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
+    }
+    if (collectedTrash == totalTrash) {
+        game.splash("All scraps collected!")
+        game.over(true, effects.confetti)
+    } else {
+        for (let index = 0; index < totalTrash; index++) {
+            scrap = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
+            // Add the scrap sprite to the list
+            list.push(scrap)
+            tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
+        }
     }
 }
 let pin = 0
