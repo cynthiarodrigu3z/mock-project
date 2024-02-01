@@ -545,44 +545,6 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
-            case "image6":
-            case "door":return img`
-5 5 5 5 5 5 5 5 5 5 5 . . . . . 
-5 c c c c c c c c c 5 . . . . . 
-5 c b b b b b b b c 5 . . . . . 
-5 c b b b f f f f c 5 . . . . . 
-5 c f f f b b b b c 5 . . . . . 
-5 c b b b b b b b c 5 . . . . . 
-5 c b b b b b b b c 5 . . . . . 
-5 c b b b b b b b c 5 . . . . . 
-5 c b b b f f f f c 5 . . . . . 
-5 c f f f b b b b c 5 . . . . . 
-5 c b b b b b b b c 5 . . . . . 
-5 c b b b b b b b c 5 . . . . . 
-5 c b b b f f f f c 5 . . . . . 
-5 c f f f b b b b c 5 . . . . . 
-5 c c c c c c c c c 5 . . . . . 
-5 5 5 5 5 5 5 5 5 5 5 . . . . . 
-`;
-            case "image9":
-            case "tattered metal sheet":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . 5 5 5 5 . . . . . . . . . 
-. . 5 c c c c 5 5 5 5 . . . . . 
-. . 5 c b b b c c c c 5 . . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . . 5 c c c c c c c c 5 . . . 
-. . . . 5 5 5 5 5 5 5 . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`;
             case "image11":
             case "monkey":return img`
 . . . . f f f f f . . . . . . . 
@@ -601,25 +563,6 @@ c c c c c d d e e e f c . . . .
 . f b d f d b f b b f e f f e f 
 . f d d f d d f d d b e f f f f 
 . . f f f f f f f f f f f f f . 
-`;
-            case "image12":
-            case "metal sheet":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . 5 5 5 5 5 5 5 5 5 . . . . 
-. . 5 c c c c c c c c c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b b c 5 . . 
-. . . 5 c b b b b b b b c 5 . . 
-. . . 5 c b b b b b b b c 5 . . 
-. . 5 c b b b b b b b b c 5 . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c b b b b b b b c 5 . . . 
-. . 5 c c c c c c c c 5 . . . . 
-. . . 5 5 5 5 5 5 5 5 . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
 `;
             case "image13":
             case "womp":return img`
@@ -762,6 +705,63 @@ c c c c c d d e e e f c . . . .
 . . . . . . . 7 7 7 7 7 7 . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
+`;
+            case "image9":
+            case "tattered metal sheet":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . 5 5 5 5 . . . . . . . . . 
+. . 5 c c c c 5 5 5 5 . . . . . 
+. . 5 c b b b c c c c 5 . . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b c 5 . . 3 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . . 5 c c c c c c c c 5 . . . 
+. . . . 5 5 5 5 5 5 5 . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
+            case "image12":
+            case "metal sheet":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . 5 5 5 5 5 5 5 5 5 . . . . 
+. . 5 c c c c c c c c c 5 . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b b c 5 . . 
+. . . 5 c b b b b b b b c 5 . . 
+. . . 5 c b b b b b b b c 5 . . 
+. . 5 c b b b b b b b b c 5 . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c b b b b b b b c 5 . . . 
+. . 5 c c c c c c c c 5 . . . . 
+. . . 5 5 5 5 5 5 5 5 . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
+            case "image6":
+            case "door":return img`
+5 5 5 5 5 5 5 5 5 5 5 . . . . . 
+5 c c c c c c c c c 5 . . . . . 
+5 c b b b b b b b c 5 . . . . . 
+5 c b b b f f f f c 5 . . . . . 
+5 c f f f b b b b c 5 . . . . . 
+5 c b b b b b b b c 5 . . . . . 
+5 c b b b b b b b c 5 . . . . . 
+5 c b b b b b b b c 5 . . . . . 
+5 c b b b f f f f c 5 . . . . . 
+5 c f f f b b b b c 5 . . . . . 
+5 c b b b b b b b c 5 . . . . . 
+5 c b b b b b b b c 5 . . . . . 
+5 c b b b f f f f c 5 . . . . . 
+5 c f f f b b b b c 5 . . . . . 
+5 c c c c c c c c c 5 . . . . . 
+5 5 5 5 5 5 5 5 5 5 5 . . . . . 
 `;
         }
         return null;

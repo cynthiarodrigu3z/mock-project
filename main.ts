@@ -19,10 +19,9 @@ function openDoorWithPin (code: number) {
 function place (num: number) {
     totalTrash = Math.floor(100 / num) + 1
     for (let index = 0; index < totalTrash; index++) {
-        let list: Sprite[] = []
-        scrap = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
-        list.push(scrap)
-        tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
+        scrap = 0
+        list = [sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape), sprites.create(assets.image`metal sheet`, SpriteKind.scrape), sprites.create(assets.image`door`, SpriteKind.scrape)]
+        tiles.placeOnRandomTile(list._pickRandom(), assets.tile`Tile3`)
     }
     if (10 < num) {
         enemy = sprites.create(assets.image`alien`, SpriteKind.enemieieiie)
@@ -72,7 +71,8 @@ let spaceship: Sprite = null
 let meteor: Sprite = null
 let collectedTrash = 0
 let enemy: Sprite = null
-let scrap: Sprite = null
+let list: Sprite[] = []
+let scrap = 0
 let totalTrash = 0
 let key: Sprite = null
 let mySprite: Sprite = null
