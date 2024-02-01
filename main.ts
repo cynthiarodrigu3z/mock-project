@@ -7,7 +7,6 @@ namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
 function openDoorWithPin (code: number) {
-    // Placeholder algorithm to check if the pin is correct
     if (code == 1151) {
         // Access granted
         return true
