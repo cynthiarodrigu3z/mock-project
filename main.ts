@@ -25,12 +25,14 @@ function place (num: number) {
     }
     if (10 < num) {
         enemy = sprites.create(assets.image`alien`, SpriteKind.enemieieiie)
+        info.setLife(1)
         tiles.placeOnRandomTile(enemy, assets.tile`Tile3`)
-        enemy.follow(mySprite, 80)
+        enemy.follow(mySprite, num * 5)
     } else {
         enemy = sprites.create(assets.image`alien`, SpriteKind.enemieieiie)
         tiles.placeOnRandomTile(enemy, assets.tile`Tile3`)
-        enemy.follow(mySprite, 50)
+        enemy.follow(mySprite, num * 3)
+        info.setLife(1)
     }
 }
 function keyplacer () {
@@ -41,8 +43,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.scrape, function (sprite, otherS
     otherSprite.sayText("collected", 200, false)
     sprites.destroy(otherSprite, effects.spray, 500)
     collectedTrash += 1
+    info.changeScoreBy(1)
     if (collectedTrash == totalTrash) {
-        game.splash("All scrape collected!")
         game.over(true)
     }
 })
@@ -63,7 +65,7 @@ function cutscene () {
     sprites.destroy(meteor)
     sprites.destroy(spaceship)
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.enemieieiie, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
 })
 let pin = 0
@@ -84,7 +86,6 @@ controller.moveSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
 multilights.toggleLighting(true)
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
-info.setLife(3)
 game.showLongText("The powers out....", DialogLayout.Bottom)
 game.showLongText("We need to go to the power generator and turn on the emergency power", DialogLayout.Bottom)
 game.showLongText("im sure i wrote the code for the door down somewhere", DialogLayout.Bottom)
@@ -96,14 +97,13 @@ game.onUpdateInterval(1000, function () {
             game.splash("access granted")
             scene.cameraShake(8, 500)
             tiles.setCurrentTilemap(tilemap`lemap`)
-            place(game.askForNumber("difficulty level 1-20", 2))
             game.splash("the door opened! lets go turn on the power")
         } else {
             game.splash("access denied")
         }
     }
     if (mySprite.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
-        music.play(music.createSoundEffect(WaveShape.Noise, 794, 1599, 255, 104, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+        place(game.askForNumber("difficulty level 1-20", 2))
         scene.cameraShake(6, 1000)
         multilights.toggleLighting(false)
     }
