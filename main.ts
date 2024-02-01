@@ -2,14 +2,11 @@ namespace SpriteKind {
     export const Item = SpriteKind.create()
     export const object = SpriteKind.create()
     export const scrape = SpriteKind.create()
+    export const enemieieiie = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const statusbar = StatusBarKind.create()
 }
-sprites.onCreated(SpriteKind.Enemy, function (sprite) {
-    let ENEMIE: Sprite = null
-    ENEMIE.follow(mySprite, 20)
-})
 function openDoorWithPin (code: number) {
     if (code == 1151) {
         // Access granted
@@ -26,6 +23,15 @@ function place (num: number) {
         scrap = sprites.create(assets.image`tattered metal sheet`, SpriteKind.scrape)
         list.push(scrap)
         tiles.placeOnRandomTile(scrap, assets.tile`Tile3`)
+    }
+    if (10 < num) {
+        enemy = sprites.create(assets.image`alien`, SpriteKind.enemieieiie)
+        tiles.placeOnRandomTile(enemy, assets.tile`Tile3`)
+        enemy.follow(mySprite, 80)
+    } else {
+        enemy = sprites.create(assets.image`alien`, SpriteKind.enemieieiie)
+        tiles.placeOnRandomTile(enemy, assets.tile`Tile3`)
+        enemy.follow(mySprite, 50)
     }
 }
 function keyplacer () {
@@ -65,6 +71,7 @@ let pin = 0
 let spaceship: Sprite = null
 let meteor: Sprite = null
 let collectedTrash = 0
+let enemy: Sprite = null
 let scrap: Sprite = null
 let totalTrash = 0
 let key: Sprite = null
@@ -74,9 +81,7 @@ tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
 scene.cameraFollowSprite(mySprite)
 controller.moveSprite(mySprite)
-let mySprite2 = sprites.create(assets.image`monkey`, SpriteKind.Player)
 multilights.addLightSource(mySprite, 14)
-multilights.addLightSource(mySprite2, 14)
 multilights.toggleLighting(true)
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 info.setLife(3)
@@ -106,6 +111,5 @@ game.onUpdateInterval(1000, function () {
 forever(function () {
     if (key.overlapsWith(mySprite)) {
         story.spriteSayText(key, "1151")
-        story.printText("great you found it, now go enter it to the pinpad ", 150, 60)
     }
 })
