@@ -64,7 +64,7 @@ function cutscene () {
     sprites.destroy(spaceship)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
+    game.gameOver(false)
 })
 let pin = 0
 let spaceship: Sprite = null
@@ -77,19 +77,18 @@ let totalTrash = 0
 let key: Sprite = null
 let mySprite: Sprite = null
 cutscene()
-keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
+keyplacer()
 scene.cameraFollowSprite(mySprite)
 controller.moveSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
 multilights.toggleLighting(true)
-tiles.placeOnRandomTile(key, assets.tile`Tile0`)
-info.setLife(3)
 game.showLongText("The powers out....", DialogLayout.Bottom)
 game.showLongText("We need to go to the power generator and turn on the emergency power", DialogLayout.Bottom)
 game.showLongText("im sure i wrote the code for the door down somewhere", DialogLayout.Bottom)
 story.printText("lets look around ", 80, 0)
+tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 game.onUpdateInterval(1000, function () {
     if (mySprite.tileKindAt(TileDirection.Right, assets.tile`Tile2`)) {
         pin = game.askForNumber("pincode", 4)
