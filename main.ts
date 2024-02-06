@@ -76,7 +76,6 @@ let scrap = 0
 let totalTrash = 0
 let key: Sprite = null
 let mySprite: Sprite = null
-cutscene()
 keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
