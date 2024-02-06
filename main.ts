@@ -63,7 +63,7 @@ function cutscene () {
     sprites.destroy(meteor)
     sprites.destroy(spaceship)
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.enemieieiie, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
 })
 let pin = 0
@@ -85,7 +85,7 @@ controller.moveSprite(mySprite)
 multilights.addLightSource(mySprite, 14)
 multilights.toggleLighting(true)
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
-info.setLife(3)
+info.setLife(1)
 game.showLongText("The powers out....", DialogLayout.Bottom)
 game.showLongText("We need to go to the power generator and turn on the emergency power", DialogLayout.Bottom)
 game.showLongText("im sure i wrote the code for the door down somewhere", DialogLayout.Bottom)
