@@ -55,11 +55,9 @@ function cutscene () {
     spaceship = sprites.create(assets.image`ship`, SpriteKind.Player)
     spaceship.setScale(0.2, ScaleAnchor.Middle)
     spaceship.setPosition(13, 50)
-    // riknoll/arcade-story
     story.spriteMoveToLocation(spaceship, 100, 50, 100)
     scene.cameraShake(4, 500)
     spaceship.startEffect(effects.warmRadial)
-    // riknoll/arcade-story
     story.printText("the ship has crashed and needs repairs!", 80, 0)
     effects.clearParticles(spaceship)
     sprites.destroy(meteor)
@@ -84,9 +82,6 @@ tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
 scene.cameraFollowSprite(mySprite)
 controller.moveSprite(mySprite)
-// 
-// felixtsu on github
-// pxt-lantern
 multilights.addLightSource(mySprite, 14)
 multilights.toggleLighting(true)
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
