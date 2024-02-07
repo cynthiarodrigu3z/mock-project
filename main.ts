@@ -79,6 +79,7 @@ let totalTrash = 0
 let key: Sprite = null
 let mySprite: Sprite = null
 cutscene()
+keyplacer()
 tiles.setCurrentTilemap(tilemap`map in doors`)
 mySprite = sprites.create(assets.image`duck`, SpriteKind.Player)
 scene.cameraFollowSprite(mySprite)
@@ -88,7 +89,6 @@ controller.moveSprite(mySprite)
 // pxt-lantern
 multilights.addLightSource(mySprite, 14)
 multilights.toggleLighting(true)
-keyplacer()
 tiles.placeOnRandomTile(key, assets.tile`Tile0`)
 info.setLife(1)
 game.showLongText("The powers out....", DialogLayout.Bottom)
